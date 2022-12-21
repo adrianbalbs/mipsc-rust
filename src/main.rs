@@ -123,6 +123,6 @@ fn addi(s: i32, t: i32, imm: i16, registers: &mut [i32; 32], trace_mode: &bool, 
     registers[t as usize] = registers[s as usize] + imm as i32;
     if *trace_mode {
         println!("{}: {:#08X} addi ${}, ${}, {}", pc, instruction, t, s, imm);
-        println!(">>> ${} = ${}", t, registers[t as usize]);
+        println!(">>> ${} = {}", t, registers[t as usize]);
     }
 } 
