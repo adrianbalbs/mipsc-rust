@@ -122,7 +122,7 @@ fn check_registers(instruction: &u32, registers: &mut [i32; 32], hi_lo_reg: &mut
 fn addi(s: i32, t: i32, imm: i16, registers: &mut [i32; 32], trace_mode: &bool, pc: &usize, instruction: &u32) {
     registers[t as usize] = registers[s as usize] + imm as i32;
     if *trace_mode {
-        println!("{}: {:#08X} addi ${}, ${}, ${}", pc, instruction, t, s, imm);
+        println!("{}: {:#08X} addi ${}, ${}, {}", pc, instruction, t, s, imm);
         println!(">>> ${} = ${}", t, registers[t as usize]);
     }
 } 
