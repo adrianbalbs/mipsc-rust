@@ -73,6 +73,7 @@ fn execute_instructions(instructions: Vec<u32>, trace_mode: bool) {
                 eprintln!("Illegal branch to non-instruction: PC = {}", pc);
                 process::exit(1);
             }
+            jump = 0;
         } else {
             pc += 1;
         }
@@ -153,7 +154,7 @@ fn bne(s: i32, t: i32, imm: i16, registers: &mut [i32; MAX_REGISTERS],
         *jump = imm as i32;
     }
     if *trace_mode {
-        println!("{}: {:#08X} bne ${}, ${}, ${}", pc, instruction, s, t, imm);
+        println!("{}: {:#08X} bne  ${}, ${}, {}", pc, instruction, s, t, imm);
         if *jump != 0 {
             println!(">>> branch taken to PC = {}", pc + *jump);
         } else {
@@ -168,7 +169,7 @@ fn beq(s: i32, t: i32, imm: i16, registers: &mut [i32; MAX_REGISTERS],
         *jump = imm as i32;
     }
     if *trace_mode {
-        println!("{}: {:#08X} beq ${}, ${}, ${}", pc, instruction, s, t, imm);
+        println!("{}: {:#08X} beq  ${}, ${}, {}", pc, instruction, s, t, imm);
         if *jump != 0 {
             println!(">>> branch taken to PC = {}", pc + *jump);
         } else {
@@ -176,3 +177,5 @@ fn beq(s: i32, t: i32, imm: i16, registers: &mut [i32; MAX_REGISTERS],
         }
     }
 }
+
+
